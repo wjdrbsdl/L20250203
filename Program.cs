@@ -2,6 +2,7 @@
 
 namespace L20250203
 {
+
     internal class Program
     {
         static int[,] data = new int[10, 10];
@@ -35,7 +36,12 @@ namespace L20250203
 
         static void Main(string[] args)
         {
-
+            {
+                int k = 0;
+            }
+            {
+                int m = 5;
+            }
             //초기화
             Initialize();
 
