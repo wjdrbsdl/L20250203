@@ -4,24 +4,30 @@
     {
         static void Main(string[] args)
         {
+            int[,] data = new int[10,10];
 
-            int[,] data = new int[5, 5];
-            int size = 5;
-            for (int j = 1; j <= size; j++)
+            int num = 1;
+            //초기화
+            for (int i = 0; i < 10; i++)
             {
-                int blankCount = size - j;
-                for (int i = 1; i <= blankCount; i++)
+                for (int j = 0; j < 10; j++)
                 {
-                    Console.Write(" ");
+                    data[i, j] = num;
+                    num++;
+                    
                 }
-                for (int i = blankCount+1; i <= size; i++)
+            }
+
+            //출력
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
                 {
-                    Console.Write("*");
+                    Console.Write(data[i, j] + "\t");
+
                 }
                 Console.WriteLine();
             }
-            
-
         }
     }
 }
