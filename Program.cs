@@ -1,24 +1,30 @@
-﻿namespace L20250203
+﻿using System;
+
+namespace L20250203
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Initialize()
         {
-            int[,] data = new int[10,10];
+            int[,] data = new int[10, 10];
 
             int num = 1;
-            //초기화
+      
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
                     data[i, j] = num;
                     num++;
-                    
+
                 }
             }
+        }
 
-            //출력
+        static void Print()
+        {
+            int[,] data = new int[10, 10];
+
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -28,6 +34,17 @@
                 }
                 Console.WriteLine();
             }
+        }
+
+        static void Main(string[] args)
+        {
+
+            //초기화
+            Initialize();
+
+            //출력
+            Print();
+    
         }
     }
 }
