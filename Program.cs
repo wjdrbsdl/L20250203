@@ -4,10 +4,9 @@ namespace L20250203
 {
     internal class Program
     {
+        static int[,] data = new int[10, 10];
         static void Initialize()
         {
-            int[,] data = new int[10, 10];
-
             int num = 1;
       
             for (int i = 0; i < 10; i++)
@@ -23,8 +22,6 @@ namespace L20250203
 
         static void Print()
         {
-            int[,] data = new int[10, 10];
-
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
