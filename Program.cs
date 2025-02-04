@@ -12,30 +12,76 @@ namespace L20250203
         //3. 중복 허용 불가 
         static void Main(string[] args)
         {
-            int[] numbers = new int[52];
-            for (int i = 0; i < 52; i++)
+            //1 ~ 13 Heart
+            //14 ~ 26 Diamond
+            //27 ~ 39 Clover
+            //40 ~ 52 Spade
+            int[] deck = new int[52];
+            for (int i = 0; i < deck.Length; i++)
             {
-                numbers[i] = i + 1;
+                deck[i] = i + 1;
             }
+            Random randomMachine = new Random();
 
-            for(int i = 1; i <= 8; i++)
+            //덱 3배정도 섞기 진행
+            for (int i = 0; i < deck.Length*3; i++)
             {
-                bool randomFinding = true;
-                //중복 안 된거 찾을때까지 반복
-                while (randomFinding)
-                {
-                    int randomIndex = RandomNumberGenerator.GetInt32(52);
-                    //배열 값이 0이 아니라면(중복이 아니라면)
-                    if (numbers[randomIndex] != 0)
-                    {
-                        Console.WriteLine(numbers[randomIndex].ToString());//출력
-                        numbers[randomIndex] = 0; //출력했다는 표시로 0
-                        randomFinding = false;
-                    }
-                }
-
+                //카드 섞는 중 
+                int firstIndex = randomMachine.Next(0, deck.Length);
+                int secondIndex = randomMachine.Next(0, deck.Length);
+                int temp = deck[firstIndex];
+                deck[firstIndex] = deck[secondIndex];
+                deck[secondIndex] = temp;
             }
             
+            //뽑기
+            for (int i = 1; i <= 8; i++)
+            {
+                int diceNum = deck[i - 1];
+
+                //카드 쓰기
+                int emblem = (diceNum-1) / 13; 
+                int cardNum = diceNum % 13;
+
+                string cardName = cardNum.ToString();
+                if(cardNum == 11)
+                {
+                    cardName = "J";
+                }
+                else if (cardNum == 12)
+                {
+                    cardName = "Q";
+                }
+                else if (cardNum == 0)
+                {
+                    cardName = "K";
+                }
+                else if (cardNum == 1)
+                {
+                    cardName = "Ace";
+                }
+
+                string emblemName = "";
+                if(emblem == 0)
+                {
+                    emblemName = "Heart";
+                }
+                else if (emblem == 1)
+                {
+                    emblemName = "Clover";
+                }
+                else if (emblem == 2)
+                {
+                    emblemName = "Diamond";
+                }
+                else if (emblem == 3)
+                {
+                    emblemName = "Spade";
+                }
+
+                Console.WriteLine(emblemName+" "+cardName);
+            }
+
         }
 
     }
